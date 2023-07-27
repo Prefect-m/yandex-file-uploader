@@ -1,7 +1,6 @@
 import axios from "axios"
 
 const yandexURI = "https://cloud-api.yandex.net/v1/disk/resources/upload"
-// const token = "y0_AgAAAABvpaW8AADLWwAAAADowhb1vfol6zhRR0Coyr-5CrRJVzg47Tg"
 
 export const fileUpload = async (files, config, token) => {
   let result
