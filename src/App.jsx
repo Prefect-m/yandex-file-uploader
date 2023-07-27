@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { FileUploader } from "./components/fileUploader/FileUploader"
 import { Hello } from "./components/hello/Hello"
-import { HelloContext } from "./context"
+import { HelloContext } from "./context/context"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 

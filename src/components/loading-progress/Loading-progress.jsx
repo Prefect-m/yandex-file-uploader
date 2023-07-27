@@ -1,6 +1,6 @@
 import React from "react"
 
-export const Loader = ({ progress }) => {
+export const LoadingProgress = ({ progress }) => {
   return (
     <span
       style={{

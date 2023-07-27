@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react"
 import { Input } from "../input/Input"
 import { useDropzone } from "react-dropzone"
 import { fileUpload } from "../../services/file-upload"
-import { Loader } from "../loader/Loader"
+import { LoadingProgress } from "../loading-progress/Loading-progress"
 import { Preview } from "../preview/Preview"
 import { Button } from "../button/Button"
-import { HelloContext } from "../../context"
+import { HelloContext } from "../../context/context"
 import { toast } from "react-toastify"
 
 export const FileUploader = () => {
@@ -86,7 +86,7 @@ export const FileUploader = () => {
       </div>
       <div className="file-uploader" {...getRootProps()}>
         <div className="preview">{preview && <Preview images={preview} />}</div>
-        {isUploading && <Loader progress={progress} />}
+        {isUploading && <LoadingProgress progress={progress} />}
         <span className="maxCountImage">
           Максимальное количество выбираемых файлов: {max}
         </span>

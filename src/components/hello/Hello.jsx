@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { Input } from "../input/Input"
 import { Button } from "../button/Button"
-import { HelloContext } from "../../context"
+import { HelloContext } from "../../context/context"
 
 export const Hello = () => {
   const [token, setToken] = useState("")
