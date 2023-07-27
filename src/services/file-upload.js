@@ -21,9 +21,9 @@ export const fileUpload = async (files, config, token) => {
         axios.put(res.data.href, file, config)
         result = res
       })
-      .catch(function (err) {
-        console.log(err)
-      })
+    // .catch(function (err) {
+    //   console.log(err)
+    // })
   }
   return result
 }

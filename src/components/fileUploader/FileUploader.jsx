@@ -6,6 +6,7 @@ import { Loader } from "../loader/Loader"
 import { Preview } from "../preview/Preview"
 import { Button } from "../button/Button"
 import { HelloContext } from "../../context"
+import { toast } from "react-toastify"
 
 export const FileUploader = () => {
   const [selectedFile, setSelectedFile] = useState(null)
@@ -59,10 +60,12 @@ export const FileUploader = () => {
       if (data.status === 200) {
         setSelectedFile([])
         setPreview([])
+        toast("Загрузка прошла успешно")
         setIssUploading(false)
       }
     } catch (err) {
-      console.log(err)
+      toast("Не валидный токен")
+      setIssUploading(false)
     }
   }
 
