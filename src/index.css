@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+.file-uploader {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 12px 20px;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+  cursor: pointer;
+  max-width: 60%;
+  width: 100%;
+}
+.maxCountImage {
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.previewImage img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.btn button {
+  background: #2456e0;
+  padding: 10px 30px;
+  color: #ffffff;
+  border-radius: 3px;
+  border: none;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.btn.danger button {
+  background: #e0ae24;
+}
+.btn button:nth-child(2) {
+  background: #c58e18;
+}
+.btn button:hover {
+  opacity: 0.8;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* HELLO */
+.hello {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  background: rgba(85, 56, 216, 0.98);
+  border-radius: 20px;
+  z-index: 10;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.hello input {
+  width: 60%;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.98);
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: #fff;
+}
+.hello input::placeholder {
+  font-family: inherit;
+}
+.hello input:focus {
+  outline: none;
+}
+.hello span {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  line-height: 24px;
+}
+.helloBtn {
+  padding: 10px 20px;
+  border-radius: 3px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+}
+.helloBtn:hover {
+  opacity: 0.8;
+}
