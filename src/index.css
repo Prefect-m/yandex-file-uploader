@@ -120,3 +120,13 @@ button[disabled] {
 .helloBtn:hover {
   opacity: 0.8;
 }
+.choiseFiles {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-direction: column;
+  font-size: 10px;
+  font-weight: bold;
+  font-style: normal;
+  line-height: 16px;
+}

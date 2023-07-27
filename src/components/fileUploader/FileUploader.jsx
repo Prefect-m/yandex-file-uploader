@@ -9,7 +9,7 @@ import { HelloContext } from "../../context"
 import { toast } from "react-toastify"
 
 export const FileUploader = () => {
-  const [selectedFile, setSelectedFile] = useState(null)
+  const [selectedFile, setSelectedFile] = useState([])
   const [preview, setPreview] = useState([])
   const [isUploading, setIssUploading] = useState(false)
   const [progress, setProgress] = useState(0)
@@ -34,11 +34,21 @@ export const FileUploader = () => {
 
   const dropHandler = async (data) => {
     try {
-      const files = data
-      const selectedArray = Array.from(files)
-      const images = selectedArray.map((img) => window.URL.createObjectURL(img))
-      setPreview(images)
-      setSelectedFile(files)
+      const arrayData = Array.from(data)
+      const isImages = (file) => file.type.startsWith("image/")
+      const isOntherFiles = (file) => !file.type.startsWith("image/")
+
+      const images = arrayData.filter(isImages)
+      const otherFiles = arrayData.filter(isOntherFiles)
+      const imagesWithUrls = images.map((file) =>
+        window.URL.createObjectURL(file)
+      )
+      if (!images.length) {
+        setSelectedFile(otherFiles)
+      } else {
+        setSelectedFile(images)
+        setPreview(imagesWithUrls)
+      }
     } catch (err) {
       console.log(err)
     }
@@ -47,7 +57,6 @@ export const FileUploader = () => {
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({
       onDrop: dropHandler,
-      accept: "image/*",
       multiple: true,
       maxSize: 10000000,
       maxFiles: max,
@@ -81,6 +90,15 @@ export const FileUploader = () => {
         <span className="maxCountImage">
           Максимальное количество выбираемых файлов: {max}
         </span>
+        <div className="choiseFiles">
+          выбранные файлы:
+          {selectedFile &&
+            selectedFile.map((file, i) => (
+              <span key={i}>
+                {i + 1} - {file.path}
+              </span>
+            ))}
+        </div>
         <Input {...getInputProps()} />
         {isDragActive ? (
           <p>Перетащите файлы сюда...</p>
@@ -91,7 +109,10 @@ export const FileUploader = () => {
         {isDragReject && <p>Разрешенны только изображения</p>}
       </div>
       <div className="btn">
-        <Button onClick={handleUpload} disabled={!preview.length}>
+        <Button
+          onClick={handleUpload}
+          disabled={!selectedFile && !preview.length}
+        >
           Загрузить на диск
         </Button>
         <Button
